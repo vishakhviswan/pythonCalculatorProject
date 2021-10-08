@@ -7,23 +7,37 @@ e=Entry(window,width=45, borderwidth=5)
 e.grid(row=0, column=0,columnspan=4, padx=10, pady=10)
 
 def button_click(number):
-    # e.delete(0,END)
     current = e.get()
-    e.insert(0,current + number)
+    e.delete(0,END)
+    e.insert(0,  str(current) + str(number) )
 
 
 def button_add():
-    print("pressed")
-    return
+    first_num = e.get()
+    global f_num
+    f_num = int(first_num)
+    e.delete(0,END)
+def button_equal():
+    second_num = e.get()
+    e.delete(0,END)
+    e.insert(0,f_num +int(second_num))
+
+
+def button_ac():
+    e.delete(0,END)
+
+def button_clear():
+    e.delete(0,END)
+
 # Define Buttons
-button_ac = Button(window,text="AC",padx=41, pady=20,command = button_add )
-button_c = Button(window,text="C",padx=46, pady=20,command = button_add )
-button_pon = Button(window,text="+/-",padx=40, pady=20,command = button_add )
+button_ac = Button(window,text="AC",padx=41, pady=20,command = button_ac )
+button_c = Button(window,text="C",padx=46, pady=20,command = button_clear)
+button_pon = Button(window,text="+/-",padx=40, pady=20,command =button_add )
 button_div = Button(window,text="/",padx=40, pady=20,command = button_add )
 button_mul = Button(window,text="X",padx=40, pady=20,command = button_add )
 button_min = Button(window,text="-",padx=40, pady=20,command = button_add )
 button_plus = Button(window,text="+",padx=40, pady=20,command = button_add )
-button_equal = Button(window,text="=",padx=40, pady=20,command = button_add )
+button_equal = Button(window,text="=",padx=40, pady=20,command = button_equal)
 
 button_7 = Button(window,text="7",padx=46, pady=20,command =lambda:button_click(7))
 button_8 = Button(window,text="8",padx=46, pady=20,command = lambda:button_click(8) )
