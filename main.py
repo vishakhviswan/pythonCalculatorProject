@@ -2,9 +2,12 @@ from tkinter import *
 
 window = Tk()
 window.title("Calculator")
+window.geometry("435x450")
 
-e=Entry(window,width=45, borderwidth=5)
-e.grid(row=0, column=0,columnspan=4, padx=10, pady=10)
+e=Entry(window,width=40, borderwidth=5)
+e.grid(row=0, column=0,columnspan=3, padx=10, pady=10)
+d=Entry(window,width=5, borderwidth=5)
+d.grid(row=0, column=3)
 
 def button_click(number):
     current = e.get()
@@ -19,6 +22,8 @@ def button_add():
     math = "addition"
     f_num = int(first_num)
     e.delete(0,END)
+    d.insert(0,"+")
+
 def button_equal():
     second_num = e.get()
     e.delete(0,END)
@@ -39,6 +44,8 @@ def button_subtract():
     math = "subtraction"
     f_num = int(first_num)
     e.delete(0, END)
+    d.insert(0, "-")
+
 
 def button_multiply():
     first_num = e.get()
@@ -47,8 +54,10 @@ def button_multiply():
     math = "multiplication"
     f_num = int(first_num)
     e.delete(0, END)
+    d.insert(0, "X")
 def button_ac():
     e.delete(0,END)
+    d.delete(0, END)
 
 def button_divide():
     first_num = e.get()
@@ -57,6 +66,7 @@ def button_divide():
     math = "division"
     f_num = int(first_num)
     e.delete(0, END)
+    d.insert(0, "/")
 def button_percentage():
    second_number = e.get()
    e.delete(0,END)
@@ -64,12 +74,15 @@ def button_percentage():
        e.insert(0, f_num / 100 * int(second_number))
    if math =="division":
        e.insert(0, f_num * 100 / int(second_number))
+   d.delete(0,END)
+   d.insert(0, "%")
 
 def button_clear():
     e.delete(0,END)
+    d.delete(0, END)
 
 # Define Buttons
-button_ac = Button(window,text="AC",padx=41, pady=20,command = button_ac )
+button_ac = Button(window,text="AC",padx=41, pady=20, cursor = "hand2",command = button_ac )
 button_c = Button(window,text="C",padx=46, pady=20,command = button_clear)
 button_pon = Button(window,text="+/-",padx=40, pady=20,command =button_add )
 button_div = Button(window,text="/",padx=40, pady=20,command = button_divide )
@@ -78,17 +91,17 @@ button_min = Button(window,text="-",padx=40, pady=20,command = button_subtract )
 button_plus = Button(window,text="+",padx=40, pady=20,command = button_add )
 button_equal = Button(window,text="=",padx=40, pady=20,command = button_equal)
 
-button_7 = Button(window,text="7",padx=46, pady=20,command =lambda:button_click(7))
-button_8 = Button(window,text="8",padx=46, pady=20,command = lambda:button_click(8) )
-button_9 = Button(window,text="9",padx=46, pady=20,command = lambda:button_click(9) )
-button_4 = Button(window,text="4",padx=46, pady=20,command = lambda:button_click(4) )
-button_5 = Button(window,text="5",padx=46, pady=20,command = lambda:button_click(5) )
-button_6 = Button(window,text="6",padx=46, pady=20,command = lambda:button_click(6) )
-button_1 = Button(window,text="1",padx=46, pady=20,command = lambda:button_click(1) )
-button_2 = Button(window,text="2",padx=46, pady=20,command = lambda:button_click(2) )
-button_3 = Button(window,text="3",padx=46, pady=20,command = lambda:button_click(3) )
+button_7 = Button(window,text="7",padx=46, pady=20,bg = "white", cursor = "hand2",command =lambda:button_click(7))
+button_8 = Button(window,text="8",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(8) )
+button_9 = Button(window,text="9",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(9) )
+button_4 = Button(window,text="4",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(4) )
+button_5 = Button(window,text="5",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(5) )
+button_6 = Button(window,text="6",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(6) )
+button_1 = Button(window,text="1",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(1) )
+button_2 = Button(window,text="2",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(2) )
+button_3 = Button(window,text="3",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(3) )
 button_per = Button(window,text="%",padx=45, pady=20,command =button_percentage)
-button_0 = Button(window,text="0",padx=46, pady=20,command = lambda:button_click(0) )
+button_0 = Button(window,text="0",padx=46, pady=20,bg = "white", cursor = "hand2",command = lambda:button_click(0) )
 button_dot = Button(window,text=".",padx=47, pady=20,command = lambda:button_click(".") )
 
 # Put Buttons on the screen
